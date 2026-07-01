@@ -21,7 +21,7 @@ def chunk_text(text: str, chunk_size: int = 2000, overlap: int = 200)-> List[str
 def get_text_from_pdf(filename: str)-> str:
     text = ""
     try:
-        with open(filename, "+rb") as file:
+        with open(filename, "rb") as file:
             reader = PyPDF2.PdfReader(file)
             for page in reader.pages:
                 page_text = page.extract_text()
@@ -40,7 +40,7 @@ def get_chunks(filename: str, chunk_size: int=2000, overlap: int = 200)-> List[s
         return []
 
     #Convert text to chunks
-    chunks = get_chunks(text)
+    chunks = chunk_text(text)
 
     return chunks
     
